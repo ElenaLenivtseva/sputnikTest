@@ -12,6 +12,24 @@
       "title": "Заголовок",
       "descr": "Описание",
       "completed": false,
+      "favorite": false,
+      "requestId": "kBk9fot9SxNhc5VzPtEM9",
+      "signal": {}
+    },
+    {
+      "id": "8104",
+      "title": "jjjj",
+      "descr": "",
+      "completed": false,
+      "favorite": true,
+      "requestId": "B5MEWbzieGewZVgFSZZYC",
+      "signal": {}
+    },
+    {
+      "id": "b578",
+      "title": "lk;k;",
+      "descr": "",
+      "completed": false,
       "favorite": true
     }
   ]
