@@ -78,7 +78,11 @@ export const getFiltredTodosAsync = createAsyncThunk(
 export const todosSlice = createSlice({
   name: "todos",
   initialState: { todos: [], totalPages: 1 },
-  reducers: {},
+  reducers: {
+    clearTodos(state,action){
+      return {...state, todos: []}
+    }
+  },
   extraReducers: (builder) => {
     builder
       .addCase(getAllTodosLimitedAsync.fulfilled, (state, action) => {
@@ -114,4 +118,5 @@ export const todosSlice = createSlice({
   },
 });
 
+export const {clearTodos} = todosSlice.actions
 export default todosSlice.reducer;

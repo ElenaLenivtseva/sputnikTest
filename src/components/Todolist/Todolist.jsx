@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import {
+  clearTodos,
   getAllTodosLimitedAsync,
   getFiltredTodosAsync,
 } from "../../features/todosSlice";
@@ -12,11 +13,54 @@ const Todolist = () => {
   const todos = useSelector((state) => state.todos.todos);
   const pages = useSelector((state) => state.todos.totalPages);
   const [type, setType] = useState("all");
+  const [currentPage, setCurrentPage] = useState(1);
   // all, favorite, completed, uncompleted
 
   useEffect(() => {
     dispatch(getAllTodosLimitedAsync(1));
   }, [dispatch]);
+  useEffect(() => {
+    setCurrentPage(1); 
+    // clearTodos()
+  }, [type]);
+
+  function loadMore() {
+    if (currentPage < pages) {
+      const nextPage = currentPage + 1;
+      setCurrentPage(nextPage);
+
+      if (type === "uncompleted") {
+        dispatch(
+          getFiltredTodosAsync({
+            page: nextPage,
+            type: "completed",
+            status: false,
+          })
+        );
+      }
+      if (type === "completed") {
+        dispatch(
+          getFiltredTodosAsync({
+            page: nextPage,
+            type: "completed",
+            status: true,
+          })
+        );
+      }
+      if (type === "favorite") {
+        dispatch(
+          getFiltredTodosAsync({
+            page: nextPage,
+            type: "favorite",
+            status: true,
+          })
+        );
+      }
+      if (type === "all") {
+        dispatch(getAllTodosLimitedAsync(nextPage));
+      }
+    }
+  }
 
   return (
     <div>
@@ -63,7 +107,8 @@ const Todolist = () => {
           return <TodoItem key={item.id} item={item} />;
         })}
       </div>
-      {[...Array(pages)].map((item, index) => {
+      <button onClick={loadMore}>Загрузить еще</button>
+      {/* {[...Array(pages)].map((item, index) => {
         return (
           <>
             {type === "all" && (
@@ -124,7 +169,7 @@ const Todolist = () => {
             )}
           </>
         );
-      })}
+      })} */}
     </div>
   );
 };
