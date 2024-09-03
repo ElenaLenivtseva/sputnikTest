@@ -1,15 +1,6 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 
-export const getAllTodosAsync = createAsyncThunk(
-  "todos/getAllTodos",
-  async () => {
-    const resp = await fetch("http://localhost:3001/todos");
-    if (resp.ok) {
-      const data = await resp.json();
-      return data;
-    }
-  }
-);
+
 
 export const addTodoAsync = createAsyncThunk(
   "todos/addTodo",
@@ -59,54 +50,65 @@ export const changeStatusTodoAsync = createAsyncThunk(
   }
 );
 
-export const getFiltredTodosByStatusAsync = createAsyncThunk(
-  "todos/getFiltredTodosByStatus",
-  async (done) => {
-    const resp = await fetch(`http://localhost:3001/todos?completed=${done}`);
+export const getAllTodosLimitedAsync = createAsyncThunk(
+  "todos/getAllTodosLimited",
+  async (number) => {
+    const resp = await fetch(`http://localhost:3001/todos?_page=${number}`);
     if (resp.ok) {
-      const filteredProducts = await resp.json();
-      return filteredProducts;
+      const data = await resp.json();
+      return data;
     }
   }
 );
-export const getFavoriteTodosAsync = createAsyncThunk(
-  "todos/getavoriteTodos",
-  async () => {
-    const resp = await fetch(`http://localhost:3001/todos?favorite=true`);
+// todos?_page=1&favorite=false
+export const getFiltredTodosAsync = createAsyncThunk(
+  "todos/getFiltredTodos",
+  async (info) => {
+    const resp = await fetch(
+      `http://localhost:3001/todos?_page=${info.page}&${info.type}=${info.status}`
+    );
     if (resp.ok) {
-      const filteredProducts = await resp.json();
-      return filteredProducts;
+      const data = await resp.json();
+      return data;
     }
   }
 );
 
+
 export const todosSlice = createSlice({
   name: "todos",
-  initialState: [],
+  initialState: { todos: [], totalPages: 1 },
   reducers: {},
   extraReducers: (builder) => {
     builder
-      .addCase(getAllTodosAsync.fulfilled, (state, action) => {
-        return action.payload;
+      .addCase(getAllTodosLimitedAsync.fulfilled, (state, action) => {
+        return {
+          ...state,
+          todos: [...action.payload.data],
+          totalPages: action.payload.pages,
+        };
+      })
+      .addCase(getFiltredTodosAsync.fulfilled, (state, action) => {
+        return {
+          ...state,
+          todos: [...action.payload.data],
+          totalPages: action.payload.pages,
+        };
       })
       .addCase(addTodoAsync.fulfilled, (state, action) => {
-        return [...state, action.payload];
+        return { ...state, todos: [...state.todos, action.payload] };
       })
       .addCase(deleteTodoAsync.fulfilled, (state, action) => {
         const id = action.payload.id;
         const filtered = state.filter((e) => e.id !== id);
-        return filtered;
-      })
-      .addCase(getFavoriteTodosAsync.fulfilled, (state, action) => {
-        return action.payload;
-      })
-      .addCase(getFiltredTodosByStatusAsync.fulfilled, (state, action) => {
-        return action.payload;
+        return { ...state, todos: [...filtered] };
       })
       .addCase(changeStatusTodoAsync.fulfilled, (state, action) => {
-        const index = state.findIndex(todo => todo.id === action.payload.id);
+        const index = state.todos.findIndex(
+          (todo) => todo.id === action.payload.id
+        );
         if (index !== -1) {
-          state[index] = { ...state[index], ...action.payload };
+          state.todos[index] = { ...state.todos[index], ...action.payload };
         }
       });
   },
