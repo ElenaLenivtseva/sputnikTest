@@ -12,7 +12,7 @@
       "title": "Заголовок",
       "descr": "Описание",
       "completed": false,
-      "favorite": false,
+      "favorite": true,
       "requestId": "kBk9fot9SxNhc5VzPtEM9",
       "signal": {}
     },
