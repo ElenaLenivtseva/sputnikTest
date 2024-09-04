@@ -9,18 +9,21 @@ import TodoItem from "../TodoItem/TodoItem";
 import { useInView } from "react-intersection-observer";
 import Filter from "../Filter/Filter";
 
+
+
 const Todolist = () => {
+  const dispatch = useDispatch();
+  const [type, setType] = useState("");
+  const [currentPage, setCurrentPage] = useState(1);
+  // all, favorite, completed, uncompleted
+
   const { ref, inView } = useInView({
     threshold: 0.5,
   });
-  const dispatch = useDispatch();
 
   const todos = useSelector((state) => state.todos.todos);
   const pages = useSelector((state) => state.todos.totalPages);
   const loading = useSelector((state) => state.todos.loading);
-  const [type, setType] = useState("");
-  const [currentPage, setCurrentPage] = useState(1);
-  // all, favorite, completed, uncompleted
 
   // первичная отрисовка todos
   useEffect(() => {
@@ -104,15 +107,17 @@ const Todolist = () => {
     <div>
       <Filter switchType={switchType} />
       <div>
-        {todos.map((item) => {
-          return <TodoItem key={item.id} item={item} />;
-        })}
+        <div>
+          {todos.map((item) => {
+            return <TodoItem key={item.id} item={item} />;
+          })}
+        </div>
+        {loading ? (
+          <p>Загрузка</p>
+        ) : (
+          <div ref={ref} style={{ height: "20px" }}></div>
+        )}
       </div>
-      {loading ? (
-        <p>Загрузка</p>
-      ) : (
-        <div ref={ref} style={{ height: "50px" }}></div>
-      )}
     </div>
   );
 };

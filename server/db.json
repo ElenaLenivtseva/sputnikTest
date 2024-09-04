@@ -1,31 +1,6 @@
 {
   "todos": [
     {
-      "id": "1",
-      "title": "Заголовок",
-      "descr": "Описание",
-      "completed": true,
-      "favorite": false
-    },
-    {
-      "id": "2",
-      "title": "Заголовок",
-      "descr": "Описание",
-      "completed": false,
-      "favorite": true,
-      "requestId": "kBk9fot9SxNhc5VzPtEM9",
-      "signal": {}
-    },
-    {
-      "id": "8104",
-      "title": "jjjj",
-      "descr": "",
-      "completed": true,
-      "favorite": true,
-      "requestId": "B5MEWbzieGewZVgFSZZYC",
-      "signal": {}
-    },
-    {
       "id": "b578",
       "title": "lk;k;",
       "descr": "",
@@ -37,13 +12,13 @@
       "title": "Справиться  с эмоциями",
       "descr": "",
       "completed": false,
-      "favorite": true
+      "favorite": false
     },
     {
       "id": "3dc8",
       "title": "Исследовать подходы, чтобы сделать бесконечный скролл",
       "descr": "",
-      "completed": false,
+      "completed": true,
       "favorite": true
     },
     {
@@ -155,6 +130,27 @@
       "id": "6676",
       "title": "rjckhj",
       "descr": "",
+      "completed": false,
+      "favorite": false
+    },
+    {
+      "id": "831b",
+      "title": "Поужинать",
+      "descr": "",
+      "completed": true,
+      "favorite": false
+    },
+    {
+      "id": "e869",
+      "title": "ddfdfd",
+      "descr": "",
+      "completed": false,
+      "favorite": false
+    },
+    {
+      "id": "5600",
+      "title": "hjghjgjgj",
+      "descr": "khkhihihu uyfhfjhhjkjk gyy ftytyd",
       "completed": false,
       "favorite": false
     }
