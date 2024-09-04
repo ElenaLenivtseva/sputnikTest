@@ -7,13 +7,8 @@ import {
 } from "../../features/todosSlice";
 import TodoItem from "../TodoItem/TodoItem";
 import { useInView } from "react-intersection-observer";
+import Filter from "../Filter/Filter";
 
-const buttons = [
-  { title: "Все", type: "all" },
-  { title: "Выполненные", type: "completed" },
-  { title: "Невыполненные", type: "uncompleted" },
-  { title: "Избранные", type: "favorite" },
-];
 const Todolist = () => {
   const { ref, inView } = useInView({
     threshold: 0.5,
@@ -27,16 +22,58 @@ const Todolist = () => {
   const [currentPage, setCurrentPage] = useState(1);
   // all, favorite, completed, uncompleted
 
+  // первичная отрисовка todos
   useEffect(() => {
     switchType("all");
   }, []);
 
+  // подгрузка следующей порции todos, когда объект, по которому мы понимаем, что список закончился, появился в зоне видимости
   useEffect(() => {
+    // функция подгрузки следующих порций todos
+    function loadMore() {
+      if (currentPage < pages) {
+        const nextPage = currentPage + 1;
+        setCurrentPage(nextPage);
+        console.log("nextPage", nextPage);
+        switch (type) {
+          case "uncompleted":
+            dispatch(
+              getFiltredTodosAsync({
+                page: nextPage,
+                type: "completed",
+                status: false,
+              })
+            );
+            break;
+          case "completed":
+            dispatch(
+              getFiltredTodosAsync({
+                page: nextPage,
+                type: "completed",
+                status: true,
+              })
+            );
+            break;
+          case "favorite":
+            dispatch(
+              getFiltredTodosAsync({
+                page: nextPage,
+                type: "favorite",
+                status: true,
+              })
+            );
+            break;
+          default:
+            dispatch(getAllTodosLimitedAsync(nextPage));
+        }
+      }
+    }
     if (inView) {
       loadMore();
     }
   }, [inView]);
 
+  // функция фильтрации
   function switchType(type) {
     dispatch(clearTodos());
     setCurrentPage(1);
@@ -62,67 +99,19 @@ const Todolist = () => {
         break;
     }
   }
-  function loadMore() {
-    if (currentPage < pages) {
-      const nextPage = currentPage + 1;
-      setCurrentPage(nextPage);
-      console.log("nextPage", nextPage);
-      switch (type) {
-        case "uncompleted":
-          dispatch(
-            getFiltredTodosAsync({
-              page: nextPage,
-              type: "completed",
-              status: false,
-            })
-          );
-          break;
-        case "completed":
-          dispatch(
-            getFiltredTodosAsync({
-              page: nextPage,
-              type: "completed",
-              status: true,
-            })
-          );
-          break;
-        case "favorite":
-          dispatch(
-            getFiltredTodosAsync({
-              page: nextPage,
-              type: "favorite",
-              status: true,
-            })
-          );
-          break;
-        default:
-          dispatch(getAllTodosLimitedAsync(nextPage));
-      }
-    }
-  }
 
   return (
     <div>
-      {buttons.map((item, index) => {
-        return (
-          <button
-            key={index}
-            onClick={() => {
-              switchType(item.type);
-            }}
-          >
-            {item.title}
-          </button>
-        );
-      })}
+      <Filter switchType={switchType} />
       <div>
         {todos.map((item) => {
           return <TodoItem key={item.id} item={item} />;
         })}
       </div>
-      {loading && <p>Загрузка</p>}
-      {!loading && (
-        <p onClick={loadMore} ref={ref} style={{ height: "50px" }}></p>
+      {loading ? (
+        <p>Загрузка</p>
+      ) : (
+        <div ref={ref} style={{ height: "50px" }}></div>
       )}
     </div>
   );
