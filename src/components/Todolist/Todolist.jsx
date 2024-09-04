@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import {
   clearTodos,
@@ -6,23 +6,32 @@ import {
   getFiltredTodosAsync,
 } from "../../features/todosSlice";
 import TodoItem from "../TodoItem/TodoItem";
+import { useInView } from "react-intersection-observer";
+
 
 const Todolist = () => {
+  const {ref, inView} = useInView({
+    threshold: 0.5,
+  })
   const dispatch = useDispatch();
-
+  
   const todos = useSelector((state) => state.todos.todos);
   const pages = useSelector((state) => state.todos.totalPages);
+  const loading = useSelector((state) => state.todos.loading);
   const [type, setType] = useState("all");
   const [currentPage, setCurrentPage] = useState(1);
   // all, favorite, completed, uncompleted
 
+
   useEffect(() => {
-    dispatch(getAllTodosLimitedAsync(1));
-  }, [dispatch]);
-  useEffect(() => {
+    dispatch(clearTodos())
     setCurrentPage(1); 
-    // clearTodos()
   }, [type]);
+  useEffect(() => {
+    if(inView){
+      loadMore()
+    }
+  }, [inView]);
 
   function loadMore() {
     if (currentPage < pages) {
@@ -30,6 +39,7 @@ const Todolist = () => {
       setCurrentPage(nextPage);
 
       if (type === "uncompleted") {
+        
         dispatch(
           getFiltredTodosAsync({
             page: nextPage,
@@ -48,6 +58,7 @@ const Todolist = () => {
         );
       }
       if (type === "favorite") {
+       
         dispatch(
           getFiltredTodosAsync({
             page: nextPage,
@@ -107,69 +118,8 @@ const Todolist = () => {
           return <TodoItem key={item.id} item={item} />;
         })}
       </div>
-      <button onClick={loadMore}>Загрузить еще</button>
-      {/* {[...Array(pages)].map((item, index) => {
-        return (
-          <>
-            {type === "all" && (
-              <button
-                key={index}
-                onClick={() => dispatch(getAllTodosLimitedAsync(index + 1))}
-              >
-                {index + 1}
-              </button>
-            )}
-            {type === "uncompleted" && (
-              <button
-                key={index}
-                onClick={() =>
-                  dispatch(
-                    getFiltredTodosAsync({
-                      page: index + 1,
-                      type: "completed",
-                      status: false,
-                    })
-                  )
-                }
-              >
-                {index + 1}
-              </button>
-            )}
-            {type === "completed" && (
-              <button
-                key={index}
-                onClick={() =>
-                  dispatch(
-                    getFiltredTodosAsync({
-                      page: index + 1,
-                      type: "completed",
-                      status: true,
-                    })
-                  )
-                }
-              >
-                {index + 1}
-              </button>
-            )}
-            {type === "favorite" && (
-              <button
-                key={index}
-                onClick={() =>
-                  dispatch(
-                    getFiltredTodosAsync({
-                      page: index + 1,
-                      type: "favorite",
-                      status: true,
-                    })
-                  )
-                }
-              >
-                {index + 1}
-              </button>
-            )}
-          </>
-        );
-      })} */}
+      {loading&&<p>Загрузка</p>}
+      {!loading&&<p onClick={loadMore} ref={ref}></p>}
     </div>
   );
 };

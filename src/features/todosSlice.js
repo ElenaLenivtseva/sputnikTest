@@ -77,7 +77,7 @@ export const getFiltredTodosAsync = createAsyncThunk(
 
 export const todosSlice = createSlice({
   name: "todos",
-  initialState: { todos: [], totalPages: 1 },
+  initialState: { todos: [], totalPages: 1, loading: true },
   reducers: {
     clearTodos(state,action){
       return {...state, todos: []}
@@ -88,15 +88,29 @@ export const todosSlice = createSlice({
       .addCase(getAllTodosLimitedAsync.fulfilled, (state, action) => {
         return {
           ...state,
-          todos: [...action.payload.data],
+          todos: [...state.todos,...action.payload.data],
           totalPages: action.payload.pages,
+          loading: false
+        };
+      })
+      .addCase(getAllTodosLimitedAsync.pending, (state, action) => {
+        return {
+          ...state,
+          loading: true
         };
       })
       .addCase(getFiltredTodosAsync.fulfilled, (state, action) => {
         return {
           ...state,
-          todos: [...action.payload.data],
+          todos: [...state.todos, ...action.payload.data],
           totalPages: action.payload.pages,
+          loading: false
+        };
+      })
+      .addCase(getFiltredTodosAsync.pending, (state, action) => {
+        return {
+          ...state,
+         loading: true
         };
       })
       .addCase(addTodoAsync.fulfilled, (state, action) => {
