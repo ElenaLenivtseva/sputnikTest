@@ -3,7 +3,7 @@ import { TypeStatus } from "../components/Todolist/Todolist";
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
 
-interface Todo {
+export interface Todo {
   id: string;
   title: string;
   descr: string;

@@ -4,6 +4,7 @@ import {
   clearTodos,
   getAllTodosLimitedAsync,
   getFiltredTodosAsync,
+  Todo,
 } from "../../features/todosSlice";
 import TodoItem from "../TodoItem/TodoItem";
 import { useInView } from "react-intersection-observer";
@@ -26,9 +27,9 @@ const Todolist: React.FC = () => {
     threshold: 0.5,
   });
 
-  const todos = useSelector((state: RootState) => state.todos.todos);
-  const pages = useSelector((state: RootState) => state.todos.totalPages);
-  const loading = useSelector((state: RootState) => state.todos.loading);
+  const todos = useSelector((state: RootState) => state.todos.todos as Todo[]);
+  const pages = useSelector((state: RootState) => state.todos.totalPages as number);
+  const loading = useSelector((state: RootState) => state.todos.loading as boolean);
   const [first, setFirst] = useState(true);
   const [itemId, setItemId] = useState('');
   const [modalIsOpen, setModalIsOpen] = useState(false);

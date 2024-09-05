@@ -15,17 +15,14 @@ export const MyModal = styled.div<{opacity: string; visibility: string}>`
 `
 
 export const MyModalContent = styled.div<{opacity: string; visibility: string; transform: string}>`
-  position: fixed;
-  left: 0;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  background: rgba(0, 0, 0, 0.5);
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  width: 400px;
+  background: #fafafa;
+  position: absolute;
+  transition: all 0.5s ease-in-out;
+  transition-delay: 0.2s;
   opacity: ${(props) => props.opacity};
   visibility: ${(props) => props.visibility};
+  transform: ${(props) => props.transform};
 `;
 
 export const MyModalTitle = styled.div`
