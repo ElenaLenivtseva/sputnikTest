@@ -13,7 +13,7 @@ import {
   MyTodoDescr,
 } from "./Styles";
 
-interface Item {
+export interface Item {
   id: string,
     title: string,
     descr: string,
