@@ -4,41 +4,15 @@ import {
   changeStatusTodoAsync,
   deleteTodoAsync,
 } from "../../features/todosSlice";
-import styled from "styled-components";
-
-const MyTodo = styled.div`
-  display: flex;
-  flex-direction: column;
-  /* background-color: #135fb4; */
-  border-bottom: 0.5px solid #135fb4;
-  padding: 1.5rem;
-`;
-const MyActions = styled.div`
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 1.5rem;
-`;
-const MyLike = styled.svg`
-  height: 2rem;
-  width: 2rem;
-  cursor: pointer;
-`;
-const MyTodoButton = styled.button`
-  background-color: #135fb4;
-  color: white;
-  padding: 0.5rem 0.8rem;
-  border-radius: 10px;
-  margin-right: 1rem;
-  font-size: 1.2rem;
-`;
-const MyTodoTitle = styled.h4`
-  font-size: 1.5rem;
-`
-const MyCheckbox = styled.input`
-  margin-right: 0.5rem;
-  width: 1rem;
-`
+import {
+  MyTodo,
+  MyActions,
+  MyLike,
+  MyTodoButton,
+  MyCheckbox,
+  MyTodoTitle,
+  MyTodoDescr,
+} from "./Styles.js";
 
 const TodoItem = ({ item }) => {
   const dispatch = useDispatch();
@@ -111,7 +85,14 @@ const TodoItem = ({ item }) => {
         </div>
       </MyActions>
       <MyActions>
-        <MyTodoTitle>{item.title}</MyTodoTitle>
+        {item.completed ? (
+          <MyTodoTitle color="#97989b" line="line-through">
+            {item.title}
+          </MyTodoTitle>
+        ) : (
+          <MyTodoTitle>{item.title}</MyTodoTitle>
+        )}
+
         <MyCheckbox
           type="checkbox"
           checked={item.completed}
@@ -119,7 +100,13 @@ const TodoItem = ({ item }) => {
         ></MyCheckbox>
       </MyActions>
       <div>
-        <p>{item.descr}</p>
+        {item.completed ? (
+          <MyTodoDescr color="#97989b" line="line-through">
+            {item.descr}
+          </MyTodoDescr>
+        ) : (
+          <MyTodoDescr>{item.descr}</MyTodoDescr>
+        )}
       </div>
     </MyTodo>
   );

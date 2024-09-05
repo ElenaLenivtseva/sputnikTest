@@ -5,21 +5,14 @@
       "title": "Попробовать подход",
       "descr": "",
       "completed": false,
-      "favorite": false
+      "favorite": true
     },
     {
       "id": "3b95",
       "title": "попробовать добавить еще задач",
       "descr": "",
       "completed": false,
-      "favorite": false
-    },
-    {
-      "id": "692e",
-      "title": "шщззш",
-      "descr": "",
-      "completed": false,
-      "favorite": false
+      "favorite": true
     },
     {
       "id": "7f08",
@@ -88,7 +81,7 @@
       "id": "831b",
       "title": "Поужинать",
       "descr": "",
-      "completed": true,
+      "completed": false,
       "favorite": false
     },
     {
@@ -102,6 +95,27 @@
       "id": "5600",
       "title": "hjghjgjgj",
       "descr": "khkhihihu uyfhfjhhjkjk gyy ftytyd",
+      "completed": false,
+      "favorite": false
+    },
+    {
+      "id": "5689",
+      "title": "Мыслить позитивно",
+      "descr": "",
+      "completed": false,
+      "favorite": false
+    },
+    {
+      "id": "5c4b",
+      "title": "здравствуй",
+      "descr": "",
+      "completed": false,
+      "favorite": false
+    },
+    {
+      "id": "f568",
+      "title": "ну и что",
+      "descr": "",
       "completed": false,
       "favorite": false
     }

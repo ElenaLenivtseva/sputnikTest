@@ -122,7 +122,7 @@ export const todosSlice = createSlice({
         
         const filtered = state.todos.filter((e) => e.id !== id);
        
-        // return { ...state, todos: [...filtered] };
+        return { ...state, todos: [...filtered] };
       })
       .addCase(changeStatusTodoAsync.fulfilled, (state, action) => {
         const index = state.todos.findIndex(
