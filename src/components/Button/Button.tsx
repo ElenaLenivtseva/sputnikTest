@@ -19,16 +19,4 @@ const Button: React.FC<ButtonProps> = ({ item, switchType }) => {
 };
 
 
-// const Button = ({ item, switchType }) => {
-//   return (
-//     <MyButton
-//       onClick={() => {
-//         switchType(item.type);
-//       }}
-//     >
-//       {item.title}
-//     </MyButton>
-//   );
-// };
-
 export default Button;

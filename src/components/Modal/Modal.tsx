@@ -10,10 +10,16 @@ import {
   MyModalContent,
 } from "./Styles";
 
-const Modal = ({ modalIsOpen, itemId, closeModal }) => {
+interface ModalProps {
+  modalIsOpen: boolean;
+  itemId: string;
+  closeModal: () => void;
+}
+
+const Modal: React.FC<ModalProps> = ({ modalIsOpen, itemId, closeModal }) => {
   const dispatch = useDispatch();
   function handleDelete() {
-    dispatch(deleteTodoAsync(itemId));
+    // dispatch(deleteTodoAsync(itemId));
     closeModal();
   }
   return (
@@ -22,12 +28,12 @@ const Modal = ({ modalIsOpen, itemId, closeModal }) => {
       opacity={modalIsOpen ? "1" : "0"}
       onClick={closeModal}
     >
-    <MyModalContent
-      visibility={modalIsOpen ? "visible" : "hidden"}
-      opacity={modalIsOpen ? "1" : "0"}
-      transform={modalIsOpen ? "translateY(0%)" : "translateY(-400%)"}
-      onClick={(e) => e.stopPropagation()}
-    >
+      <MyModalContent
+        visibility={modalIsOpen ? "visible" : "hidden"}
+        opacity={modalIsOpen ? "1" : "0"}
+        transform={modalIsOpen ? "translateY(0%)" : "translateY(-400%)"}
+        onClick={(e) => e.stopPropagation()}
+      >
         <MyModalHeader>
           <MyModalTitle>Вы хотите удалить задачу?</MyModalTitle>
         </MyModalHeader>

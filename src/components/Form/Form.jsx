@@ -15,6 +15,7 @@ const initialForm = {
   completed: false,
   favorite: false,
 };
+
 const Form = () => {
   const [form, setForm] = useState(initialForm);
   const [error, setError] = useState("");

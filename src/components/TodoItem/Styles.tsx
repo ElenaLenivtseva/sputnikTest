@@ -33,14 +33,12 @@ export const MyCheckbox = styled.input`
   margin-right: 0.5rem;
   width: 1rem;
 `;
-
-export const MyTodoTitle = styled.div`
-  font-size: 1.5rem;
+export const MyTodoDescr = styled.p<{ color?: string, line?: string }>`
   color: ${(props) => props.color || "black"};
   text-decoration: ${(props) => props.line || "none"};
 `;
-
-export const MyTodoDescr = styled.p`
+export const MyTodoTitle =styled.div<{ color?: string, line?: string }>`
+  font-size: 1.5rem;
   color: ${(props) => props.color || "black"};
   text-decoration: ${(props) => props.line || "none"};
 `;

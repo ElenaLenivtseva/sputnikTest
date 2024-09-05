@@ -1,7 +1,13 @@
 import React from "react";
 import { MyLabel, MyInput } from "./Styles";
 
-const Label = ({ title, value, onChange }) => {
+interface LabelProps {
+  title: string;
+  value: string;
+  onChange: ()=> void;
+}
+
+const Label: React.FC<LabelProps> = ({ title, value, onChange }) => {
   return (
     <MyLabel>
       {title}
@@ -9,5 +15,6 @@ const Label = ({ title, value, onChange }) => {
     </MyLabel>
   );
 };
+
 
 export default Label;

@@ -9,13 +9,17 @@ const buttons = [
   { title: "Избранные", type: "favorite" },
 ];
 
-const Filter = ({ switchType }) => {
+interface FilterProps {
+  switchType: (type: string)=>void;
+}
+
+const Filter: React.FC<FilterProps> = ({ switchType }) => {
   return (
     <MyFilter>
-      {buttons.map((item, index) => {
-        return <Button item={item} key={index} switchType={switchType} />;
-      })}
-    </MyFilter>
+    {buttons.map((item, index) => {
+      return <Button item={item} key={index} switchType={switchType} />;
+    })}
+  </MyFilter>
   );
 };
 
