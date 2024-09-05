@@ -1,7 +1,14 @@
 import React from "react";
 import { deleteTodoAsync } from "../../features/todosSlice";
-import "./Modal.css";
 import { useDispatch } from "react-redux";
+import {
+  MyModalBody,
+  MyModalButton,
+  MyModalTitle,
+  MyModalHeader,
+  MyModal,
+  MyModalContent,
+} from "./Styles";
 
 const Modal = ({ modalIsOpen, itemId, closeModal }) => {
   const dispatch = useDispatch();
@@ -9,22 +16,31 @@ const Modal = ({ modalIsOpen, itemId, closeModal }) => {
     dispatch(deleteTodoAsync(itemId));
     closeModal();
   }
-
   return (
-    <div
-      className={`modal ${modalIsOpen ? "modal__show" : ""}`}
+    <MyModal
+      visibility={modalIsOpen ? "visible" : "hidden"}
+      opacity={modalIsOpen ? "1" : "0"}
       onClick={closeModal}
     >
-      <div className="modal__content" onClick={(e) => e.stopPropagation()}>
-        <div className="modal__header">
-          <div className="modal__title">Вы хотите удалить задачу?</div>
-        </div>
-        <div className="modal__body">
-          <button className='modal__button modal__button--confirm' onClick={handleDelete}>Да</button>
-          <button className='modal__button modal__button--cancel' onClick={closeModal}>Нет</button>
-        </div>
-      </div>
-    </div>
+    <MyModalContent
+      visibility={modalIsOpen ? "visible" : "hidden"}
+      opacity={modalIsOpen ? "1" : "0"}
+      transform={modalIsOpen ? "translateY(0%)" : "translateY(-400%)"}
+      onClick={(e) => e.stopPropagation()}
+    >
+        <MyModalHeader>
+          <MyModalTitle>Вы хотите удалить задачу?</MyModalTitle>
+        </MyModalHeader>
+        <MyModalBody>
+          <MyModalButton bg="#be2e2e" onClick={handleDelete}>
+            Да
+          </MyModalButton>
+          <MyModalButton bg="#4ab320" onClick={closeModal}>
+            Нет
+          </MyModalButton>
+        </MyModalBody>
+      </MyModalContent>
+    </MyModal>
   );
 };
 
