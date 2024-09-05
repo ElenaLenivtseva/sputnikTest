@@ -24,7 +24,7 @@
 </ul>
 
 <h4>Стек</h4>
-<p><i>React, RTK, StyledComponents, JSON Server</i></p>
+<p><i>React, RTK, TypeScript, StyledComponents, JSON Server</i></p>
 
 
 
