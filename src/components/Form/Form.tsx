@@ -10,7 +10,14 @@ import {
 import Label from "../Label/Label";
 import {AppDispatch} from '../../features/store'
 
-const initialForm = {
+interface IForm {
+  id?: string,
+  title: string,
+  descr: string,
+  completed: boolean,
+  favorite: boolean,
+}
+const initialForm: IForm = {
   id: '',
   title: "",
   descr: "",

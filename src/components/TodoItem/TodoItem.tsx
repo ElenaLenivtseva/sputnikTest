@@ -15,7 +15,7 @@ import {
 import { AppDispatch } from "../../features/store";
 
 export interface Item {
-  id: string,
+    id?: string,
     title: string,
     descr: string,
     completed: boolean,
@@ -61,7 +61,7 @@ const TodoItem: React.FC<TodoItemProps> = ({ item, setItemId, setModalIsOpen }) 
         <MyTodoButton
           onClick={() => {
             setModalIsOpen(true);
-            setItemId(item.id);
+            setItemId(item.id as string);
           }}
         >
           Удалить
