@@ -1,13 +1,6 @@
 {
   "todos": [
     {
-      "id": "db19",
-      "title": "Попробовать подход",
-      "descr": "",
-      "completed": true,
-      "favorite": true
-    },
-    {
       "id": "3b95",
       "title": "попробовать добавить еще задач",
       "descr": "",
@@ -20,13 +13,6 @@
       "descr": "",
       "completed": false,
       "favorite": true
-    },
-    {
-      "id": "8075",
-      "title": "ку",
-      "descr": "",
-      "completed": false,
-      "favorite": false
     },
     {
       "id": "0eda",
@@ -87,6 +73,27 @@
     {
       "id": "5c4b",
       "title": "здравствуй",
+      "descr": "",
+      "completed": false,
+      "favorite": false
+    },
+    {
+      "id": "e16a",
+      "title": "hghgj",
+      "descr": "",
+      "completed": false,
+      "favorite": false
+    },
+    {
+      "id": "5b64",
+      "title": "получилось?",
+      "descr": "",
+      "completed": false,
+      "favorite": false
+    },
+    {
+      "id": "",
+      "title": "итак",
       "descr": "",
       "completed": false,
       "favorite": false

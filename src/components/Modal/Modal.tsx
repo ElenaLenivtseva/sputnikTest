@@ -9,6 +9,7 @@ import {
   MyModal,
   MyModalContent,
 } from "./Styles";
+import { AppDispatch } from "../../features/store";
 
 interface ModalProps {
   modalIsOpen: boolean;
@@ -17,9 +18,9 @@ interface ModalProps {
 }
 
 const Modal: React.FC<ModalProps> = ({ modalIsOpen, itemId, closeModal }) => {
-  const dispatch = useDispatch();
+  const dispatch = useDispatch<AppDispatch>();
   function handleDelete() {
-    // dispatch(deleteTodoAsync(itemId));
+    dispatch(deleteTodoAsync(itemId));
     closeModal();
   }
   return (

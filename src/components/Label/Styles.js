@@ -5,6 +5,7 @@ export const MyLabel = styled.label`
   flex-direction: column;
   font-size: 1.5rem;
 `;
+
 export const MyInput = styled.input`
   background: #bcf1f5;
   padding: 0.5rem 0.8rem;

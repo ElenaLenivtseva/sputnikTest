@@ -7,6 +7,9 @@ interface Button {
   title: string;
   type: TypeStatus;
 }
+interface FilterProps {
+  switchType: (type: TypeStatus)=>void;
+}
 
 const buttons: Button[] = [
   { title: "Все", type: "all" },
@@ -15,10 +18,6 @@ const buttons: Button[] = [
   { title: "Избранные", type: "favorite" },
 ];
 
-
-interface FilterProps {
-  switchType: (type: TypeStatus)=>void;
-}
 
 const Filter: React.FC<FilterProps> = ({ switchType }) => {
   return (

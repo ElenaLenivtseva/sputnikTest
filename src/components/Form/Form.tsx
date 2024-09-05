@@ -8,8 +8,10 @@ import {
   MyError,
 } from "./Styles";
 import Label from "../Label/Label";
+import {AppDispatch} from '../../features/store'
 
 const initialForm = {
+  id: '',
   title: "",
   descr: "",
   completed: false,
@@ -19,17 +21,19 @@ const initialForm = {
 const Form = () => {
   const [form, setForm] = useState(initialForm);
   const [error, setError] = useState("");
-  const dispatch = useDispatch();
-  function handleSubmit(e) {
+  const dispatch = useDispatch<AppDispatch>();
+  
+function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
     if (form.title !== "") {
-      dispatch(addTodoAsync(form));
-      setForm(initialForm);
-      setError("");
+        dispatch(addTodoAsync(form));
+        setForm(initialForm);
+        setError("");
     } else {
-      setError("Заголовок задачи не должен быть пустым! Описание опционально.");
+        setError("Заголовок задачи не должен быть пустым! Описание опционально.");
     }
-  }
+}
+
   return (
     <MyContainer>
       <MyForm onSubmit={handleSubmit}>

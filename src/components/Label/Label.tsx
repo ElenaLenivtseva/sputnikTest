@@ -4,7 +4,7 @@ import { MyLabel, MyInput } from "./Styles";
 interface LabelProps {
   title: string;
   value: string;
-  onChange: ()=> void;
+  onChange: (e: React.ChangeEvent<HTMLInputElement>)=> void;
 }
 
 const Label: React.FC<LabelProps> = ({ title, value, onChange }) => {
