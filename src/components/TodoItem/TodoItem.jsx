@@ -14,7 +14,7 @@ import {
   MyTodoDescr,
 } from "./Styles.js";
 
-const TodoItem = ({ item }) => {
+const TodoItem = ({ item, setItemId, setModalIsOpen }) => {
   const dispatch = useDispatch();
 
   function handleChangeFav(item) {
@@ -28,10 +28,6 @@ const TodoItem = ({ item }) => {
     };
 
     dispatch(changeStatusTodoAsync(obj));
-  }
-
-  function handleDelete() {
-    dispatch(deleteTodoAsync(item.id));
   }
 
   function handleStatusChange(item) {
@@ -49,7 +45,14 @@ const TodoItem = ({ item }) => {
   return (
     <MyTodo>
       <MyActions>
-        <MyTodoButton onClick={handleDelete}>Удалить</MyTodoButton>
+        <MyTodoButton
+          onClick={() => {
+            setModalIsOpen(true);
+            setItemId(item.id);
+          }}
+        >
+          Удалить
+        </MyTodoButton>
         <div>
           {item.favorite ? (
             <MyLike

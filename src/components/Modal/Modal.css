@@ -1,0 +1,79 @@
+
+.modal {
+    position: fixed;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    visibility: hidden;
+}
+.modal__content {
+    width: 400px;
+    background: #fafafa;
+    position: absolute;
+    transform: translateY(-400%);
+    transition: all 0.4s ease-in-out;
+    transition-delay: 0.1s;
+    opacity: 0;
+    visibility: hidden;
+}
+.modal__header {
+    color: white;
+    background: #135fb4;
+}
+.modal__header,
+.modal__footer {
+    padding: 1rem;
+}
+.modal__body {
+    padding: 1.5rem;
+    border-bottom: 1px solid #eee;
+    border-top: 1px solid #eee;
+    display: flex;
+    justify-content: center;
+}
+.modal__footer {
+    display: flex;
+    justify-content: space-around;
+}
+.modal__show {
+    opacity: 1;
+    visibility: visible;
+}
+.modal__show .modal__content {
+    transform: translateY(0%);
+    opacity: 1;
+    visibility: visible;
+}
+.modal__title {
+    font-size: 1.5rem;
+    font-weight: bold;
+    text-align: center;
+}
+.modal__infoWrap {
+    display: flex;
+}
+.modal__infoTitle {
+    width: 30%;
+    margin-bottom: 1rem;
+    font-weight: bold;
+
+}
+.modal__button {
+    color: white;
+    padding: 0.5rem 0.8rem;
+    border-radius: 10px;
+    font-size: 1.2rem;
+}
+.modal__button--cancel {
+    background: rgb(192, 68, 68);
+    margin-left: 4rem;
+}
+.modal__button--confirm {
+    background: rgb(68, 192, 85);
+}

@@ -9,6 +9,7 @@ import TodoItem from "../TodoItem/TodoItem";
 import { useInView } from "react-intersection-observer";
 import Filter from "../Filter/Filter";
 import {MyMessage} from './Styles'
+import Modal from '../Modal/Modal'
 
 const Todolist = () => {
   const dispatch = useDispatch();
@@ -24,7 +25,13 @@ const Todolist = () => {
   const pages = useSelector((state) => state.todos.totalPages);
   const loading = useSelector((state) => state.todos.loading);
   const [first, setFirst] = useState(true);
+  const [itemId, setItemId] = useState('');
+  const [modalIsOpen, setModalIsOpen] = useState(false);
 
+  function closeModal() {
+    setItemId('');
+    setModalIsOpen(false);
+  }
 
   // подгрузка следующей порции todos, когда объект, по которому мы понимаем, что список закончился, появился в зоне видимости
   useEffect(() => {
@@ -106,7 +113,8 @@ const Todolist = () => {
       <div>
         <div>
           {todos.map((item) => {
-            return <TodoItem key={item.id} item={item} />;
+            return <TodoItem key={item.id} item={item} setItemId={setItemId}
+            setModalIsOpen={setModalIsOpen}/>;
           })}
         </div>
         {first && (
@@ -121,6 +129,7 @@ const Todolist = () => {
         )}
         {!loading && !first && <div ref={ref} style={{ height: "20px" }}></div>}
       </div>
+      <Modal modalIsOpen={modalIsOpen} itemId={itemId} closeModal={closeModal}/>
     </div>
   );
 };
