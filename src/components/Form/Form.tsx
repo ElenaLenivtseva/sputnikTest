@@ -18,7 +18,6 @@ interface IForm {
   favorite: boolean,
 }
 const initialForm: IForm = {
-  id: '',
   title: "",
   descr: "",
   completed: false,

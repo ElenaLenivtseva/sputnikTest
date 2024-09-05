@@ -1,150 +1,157 @@
 {
   "todos": [
     {
-      "id": "3b95",
-      "title": "попробовать добавить еще задач",
+      "id": "1",
+      "title": "Изучить HTML",
+      "descr": "",
+      "completed": true,
+      "favorite": false
+    },
+    {
+      "id": "2",
+      "title": "Изучить CSS",
+      "descr": "",
+      "completed": true,
+      "favorite": false
+    },
+    {
+      "id": "3",
+      "title": "Изучить JS",
+      "descr": "",
+      "completed": true,
+      "favorite": true
+    },
+    {
+      "id": "4",
+      "title": "Изучить базовые вещи в Typescript",
+      "descr": "",
+      "completed": true,
+      "favorite": false
+    },
+    {
+      "id": "5",
+      "title": "Изучить БЭМ",
+      "descr": "",
+      "completed": true,
+      "favorite": true
+    },
+    {
+      "id": "6",
+      "title": "Изучить SASS",
+      "descr": "",
+      "completed": true,
+      "favorite": true
+    },
+    {
+      "id": "7",
+      "title": "Изучить Gulp",
+      "descr": "",
+      "completed": true,
+      "favorite": false
+    },
+    {
+      "id": "8",
+      "title": "Изучить Webpack",
+      "descr": "",
+      "completed": true,
+      "favorite": false
+    },
+    {
+      "id": "9",
+      "title": "Переквалифицироваться",
+      "descr": "Курс от Rubius Academy",
+      "completed": true,
+      "favorite": false
+    },
+    {
+      "id": "10",
+      "title": "Разобраться с React",
+      "descr": "",
+      "completed": true,
+      "favorite": true
+    },
+    {
+      "id": "11",
+      "title": "Разобраться с Redux",
+      "descr": "",
+      "completed": true,
+      "favorite": false
+    },
+    {
+      "id": "12",
+      "title": "Разобраться с Redux Toolkit",
+      "descr": "",
+      "completed": true,
+      "favorite": false
+    },
+    {
+      "id": "13",
+      "title": "Разобраться с RTK Query",
+      "descr": "",
+      "completed": true,
+      "favorite": false
+    },
+    {
+      "id": "14",
+      "title": "Разобраться с RTK Query",
+      "descr": "",
+      "completed": true,
+      "favorite": false
+    },
+    {
+      "id": "15",
+      "title": "Понять правила SOLID",
+      "descr": "Прямо все",
+      "completed": false,
+      "favorite": false
+    },
+    {
+      "id": "16",
+      "title": "Понять DRY",
+      "descr": "",
+      "completed": true,
+      "favorite": true
+    },
+    {
+      "id": "17",
+      "title": "Изучить REST API",
       "descr": "",
       "completed": false,
       "favorite": true
     },
     {
-      "id": "",
-      "title": "итак",
+      "id": "18",
+      "title": "Изучить архитектурные паттерны",
+      "descr": "И не сойти с ума",
+      "completed": false,
+      "favorite": false
+    },
+    {
+      "id": "19",
+      "title": "Набрать портфолио из реальных проектов",
+      "descr": "На фрилансе",
+      "completed": false,
+      "favorite": false
+    },
+    {
+      "id": "20",
+      "title": "Составить резюме",
+      "descr": "Дополнять",
+      "completed": true,
+      "favorite": false
+    },
+    {
+      "id": "21",
+      "title": "Пробовать делать тестовые задания",
+      "descr": "Даже если не могу выполнить все требования",
+      "completed": true,
+      "favorite": false
+    },
+    {
+      "id": "22",
+      "title": "Смотреть, как люди проходят собеседования",
       "descr": "",
-      "completed": false,
-      "favorite": false
-    },
-    {
-      "id": "",
-      "title": "Изучить HTML",
-      "descr": "",
-      "completed": false,
-      "favorite": false
-    },
-    {
-      "id": "",
-      "title": "Изучить CSS",
-      "descr": "",
-      "completed": false,
-      "favorite": false
-    },
-    {
-      "id": "",
-      "title": "Изучить JS",
-      "descr": "",
-      "completed": false,
-      "favorite": false
-    },
-    {
-      "id": "",
-      "title": "Изучить SASS",
-      "descr": "",
-      "completed": false,
-      "favorite": false
-    },
-    {
-      "id": "",
-      "title": "Изучить Gulp",
-      "descr": "",
-      "completed": false,
-      "favorite": false
-    },
-    {
-      "id": "",
-      "title": "Изучить Webpack",
-      "descr": "",
-      "completed": false,
-      "favorite": false
-    },
-    {
-      "id": "",
-      "title": "Пройти курсы по повышению квалификации",
-      "descr": "От Rubius Academy",
-      "completed": false,
-      "favorite": false
-    },
-    {
-      "id": "",
-      "title": "Изучить React",
-      "descr": "",
-      "completed": false,
-      "favorite": false
-    },
-    {
-      "id": "",
-      "title": "Изучить Redux",
-      "descr": "",
-      "completed": false,
-      "favorite": false
-    },
-    {
-      "id": "",
-      "title": "Изучить Redux Toolkit",
-      "descr": "",
-      "completed": false,
-      "favorite": false
-    },
-    {
-      "id": "",
-      "title": "Изучить RTK Query",
-      "descr": "",
-      "completed": false,
-      "favorite": false
-    },
-    {
-      "id": "",
-      "title": "Изучить TypeScript",
-      "descr": "",
-      "completed": false,
-      "favorite": false
-    },
-    {
-      "id": "",
-      "title": "Изучить SOLID",
-      "descr": "Полностью",
-      "completed": false,
-      "favorite": false
-    },
-    {
-      "id": "",
-      "title": "Изучить KISS",
-      "descr": "",
-      "completed": false,
-      "favorite": false
-    },
-    {
-      "id": "",
-      "title": "Изучить DRY",
-      "descr": "",
-      "completed": false,
-      "favorite": false
-    },
-    {
-      "id": "",
-      "title": "Изучить REST API",
-      "descr": "",
-      "completed": false,
-      "favorite": false
-    },
-    {
-      "id": "",
-      "title": "Изучить Three.js",
-      "descr": "",
-      "completed": false,
-      "favorite": false
-    },
-    {
-      "id": "",
-      "title": "Разобраться с архитектурными паттернами",
-      "descr": "",
-      "completed": false,
-      "favorite": false
-    },
-    {
-      "id": "",
-      "title": "Набрать портфолио",
-      "descr": "Фриланс, т.к. нужны реальные проекты",
-      "completed": false,
+      "completed": true,
       "favorite": false
     }
   ]
