@@ -2,6 +2,7 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 
 
 
+
 export const addTodoAsync = createAsyncThunk(
   "todos/addTodo",
 
@@ -118,8 +119,10 @@ export const todosSlice = createSlice({
       })
       .addCase(deleteTodoAsync.fulfilled, (state, action) => {
         const id = action.payload.id;
-        const filtered = state.filter((e) => e.id !== id);
-        return { ...state, todos: [...filtered] };
+        
+        const filtered = state.todos.filter((e) => e.id !== id);
+       
+        // return { ...state, todos: [...filtered] };
       })
       .addCase(changeStatusTodoAsync.fulfilled, (state, action) => {
         const index = state.todos.findIndex(

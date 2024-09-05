@@ -30,47 +30,48 @@ const Todolist = () => {
     switchType("all");
   }, []);
 
-  // подгрузка следующей порции todos, когда объект, по которому мы понимаем, что список закончился, появился в зоне видимости
-  useEffect(() => {
-    // функция подгрузки следующих порций todos
-    function loadMore() {
-      if (currentPage < pages) {
-        const nextPage = currentPage + 1;
-        setCurrentPage(nextPage);
-        console.log("nextPage", nextPage);
-        switch (type) {
-          case "uncompleted":
-            dispatch(
-              getFiltredTodosAsync({
-                page: nextPage,
-                type: "completed",
-                status: false,
-              })
-            );
-            break;
-          case "completed":
-            dispatch(
-              getFiltredTodosAsync({
-                page: nextPage,
-                type: "completed",
-                status: true,
-              })
-            );
-            break;
-          case "favorite":
-            dispatch(
-              getFiltredTodosAsync({
-                page: nextPage,
-                type: "favorite",
-                status: true,
-              })
-            );
-            break;
-          default:
-            dispatch(getAllTodosLimitedAsync(nextPage));
-        }
+  // функция подгрузки следующих порций todos
+  function loadMore() {
+    if (currentPage < pages) {
+      const nextPage = currentPage + 1;
+      setCurrentPage(nextPage);
+      console.log("nextPage", nextPage);
+      switch (type) {
+        case "uncompleted":
+          dispatch(
+            getFiltredTodosAsync({
+              page: nextPage,
+              type: "completed",
+              status: false,
+            })
+          );
+          break;
+        case "completed":
+          dispatch(
+            getFiltredTodosAsync({
+              page: nextPage,
+              type: "completed",
+              status: true,
+            })
+          );
+          break;
+        case "favorite":
+          dispatch(
+            getFiltredTodosAsync({
+              page: nextPage,
+              type: "favorite",
+              status: true,
+            })
+          );
+          break;
+        default:
+          dispatch(getAllTodosLimitedAsync(nextPage));
       }
     }
+  }
+  // подгрузка следующей порции todos, когда объект, по которому мы понимаем, что список закончился, появился в зоне видимости
+  useEffect(() => {
+    
     if (inView) {
       loadMore();
     }
